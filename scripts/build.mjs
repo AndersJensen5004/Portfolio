@@ -15,6 +15,7 @@ const staticFiles = [
   'project-images/kernelcubed.png',
   'project-images/analystprep.png',
   'project-images/autoharness.png',
+  'project-images/pointnote.png',
   'project-images/toll-road-report.png',
   'reports/the-toll-road-moves.pdf',
 ];
