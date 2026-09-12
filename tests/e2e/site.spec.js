@@ -32,7 +32,7 @@ test('renders the portfolio shell and working navigation', async ({ page }) => {
     .click();
   await expect(page).toHaveURL(/\/projects\.html$/);
   await expect(
-    page.getByRole('heading', { level: 1, name: 'Selected projects' }),
+    page.getByRole('heading', { level: 1, name: 'Some projects' }),
   ).toBeVisible();
   await expect(page.locator('.project-detail')).toHaveCount(4);
   await expect(
@@ -77,7 +77,7 @@ test('does not overflow horizontally', async ({ page }) => {
   expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
 });
 
-test('fits the compact home in a standard desktop viewport', async ({
+test('shows complete project summaries and an undistorted profile image', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1366, height: 768 });
@@ -88,18 +88,28 @@ test('fits the compact home in a standard desktop viewport', async ({
     const imageBounds = image?.getBoundingClientRect();
 
     return {
-      clientHeight: document.documentElement.clientHeight,
+      summaries: [...document.querySelectorAll('.project-row p')].map(
+        (paragraph) => ({
+          clientWidth: paragraph.clientWidth,
+          scrollWidth: paragraph.scrollWidth,
+          clientHeight: paragraph.clientHeight,
+          scrollHeight: paragraph.scrollHeight,
+        }),
+      ),
       naturalImageRatio: image
         ? image.naturalWidth / image.naturalHeight
         : null,
       renderedImageRatio: imageBounds
         ? imageBounds.width / imageBounds.height
         : null,
-      scrollHeight: document.documentElement.scrollHeight,
     };
   });
 
-  expect(layout.scrollHeight).toBeLessThanOrEqual(layout.clientHeight);
+  expect(layout.summaries).toHaveLength(4);
+  for (const summary of layout.summaries) {
+    expect(summary.scrollWidth).toBeLessThanOrEqual(summary.clientWidth);
+    expect(summary.scrollHeight).toBeLessThanOrEqual(summary.clientHeight);
+  }
   expect(
     Math.abs(layout.renderedImageRatio - layout.naturalImageRatio),
   ).toBeLessThan(0.01);

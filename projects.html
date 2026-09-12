@@ -51,7 +51,7 @@
           <p class="command-line">
             <span aria-hidden="true">$</span> ls ./projects
           </p>
-          <h1>Selected projects</h1>
+          <h1>Some projects</h1>
         </div>
       </header>
 
@@ -64,30 +64,34 @@
               width="1602"
               height="972"
             />
-            <figcaption>research prototype / autoharness</figcaption>
+            <figcaption>early terminal prototype / autoharness</figcaption>
           </figure>
           <div class="project-copy">
             <div class="project-meta">
               <span>01</span>
-              <span>AI Agents / Decision Theory / Rust</span>
+              <span>AI Agents / Context Compaction / Rust</span>
             </div>
             <h2>AutoHarness</h2>
             <p class="project-lede">
-              Researching a self-creating, continuously evolving agent harness
-              that can propose and test improvements to its own prompts,
-              policies, routing, tools, memory, and code.
+              My current research focuses on task-adaptive context compaction
+              for long-running coding agents: how can an agent shorten its
+              working history while preserving the information it needs to
+              finish a task?
             </p>
             <p>
-              For my mathematics research paper, I am drawing on decision and
-              probability theory to study this as a sequential decision problem
-              under uncertainty: which change should an agent try, what evidence
-              makes it credible, and when does its expected utility justify
-              promotion? The current Rust prototype provides the experimental
-              substrate&mdash;durable and replayable traces, capability-scoped
-              tools, explicit permissions, provider-neutral execution,
-              reproducible evaluations, and gated promotion with
-              rollback&mdash;so adaptation can be measured rather than merely
-              claimed.
+              I am investigating policies that condense completed subtasks and
+              retain unresolved requirements, relevant evidence, and details
+              needed for upcoming actions. A central question is what happens to
+              information needed much later: a summary can support the next step
+              yet lose a constraint that matters before the task is done.
+            </p>
+            <p>
+              AutoHarness is the Rust agent runtime supporting this research. I
+              plan to compare summarization, tool-output removal, and adaptive
+              policies on extended coding tasks, holding the model, tools, and
+              context budget fixed. I will measure task completion, token usage
+              and cost, elapsed time, and mistakes caused by lost information
+              across repeated compaction. This work is in progress.
             </p>
             <a
               class="project-action"
@@ -99,28 +103,38 @@
           </div>
         </article>
 
-        <article class="project-detail project-detail--text-only">
+        <article class="project-detail project-detail--wide-image">
+          <figure class="project-visual">
+            <img
+              src="project-images/pointnote.png"
+              alt="Pointnote annotation panel beside a research report, with a selected passage, a saved note, voice input, and an agent handoff action"
+              width="1267"
+              height="757"
+              loading="lazy"
+            />
+            <figcaption>annotation workspace / pointnote</figcaption>
+          </figure>
           <div class="project-copy">
             <div class="project-meta">
               <span>02</span>
-              <span>LLM Systems / CUDA / Benchmarking</span>
+              <span>TypeScript / Browser Extension</span>
             </div>
-            <h2>DecodeBench</h2>
+            <h2>Pointnote</h2>
             <p class="project-lede">
-              A GPU inference research platform for Qwen3-family models,
-              combining validated serving paths, reproducible benchmarks, and
-              custom CUDA prototypes.
+              A Chrome and Edge extension for attaching written or spoken
+              feedback to specific page elements, then handing that context to a
+              coding or research agent.
             </p>
             <p>
-              I use it to evaluate Qwen3.5 0.8B across Transformers and vLLM,
-              measuring latency, throughput, memory, token parity, continuous
-              batching, and multi-agent load. It also includes a custom Qwen3
-              decode-attention kernel and an experimental exact-window plus
-              compressed-memory path for long contexts.
+              I built it to turn design and research observations into
+              actionable notes with selected text, screenshots, and target
+              context. Notes stay in the browser, can be grouped into review
+              sessions, and export as Markdown or a ZIP bundle for an agent
+              handoff.
             </p>
             <a
               class="project-action"
-              href="https://github.com/andersj05/DecodeBench"
+              href="https://github.com/andersj05/Pointnote"
               target="_blank"
               rel="noopener noreferrer"
               >View repository <span aria-hidden="true">-&gt;</span></a
@@ -165,35 +179,28 @@
           </div>
         </article>
 
-        <article class="project-detail">
-          <figure class="project-visual project-visual--square">
-            <img
-              src="project-images/analystprep.png"
-              alt="AnalystPrep interview practice session setup screen"
-              width="1153"
-              height="715"
-            />
-            <figcaption>application preview / analystprep</figcaption>
-          </figure>
+        <article class="project-detail project-detail--text-only">
           <div class="project-copy">
             <div class="project-meta">
               <span>04</span>
-              <span>Next.js</span>
+              <span>LLM Systems / CUDA / Benchmarking</span>
             </div>
-            <h2>AnalystPrep</h2>
+            <h2>DecodeBench</h2>
             <p class="project-lede">
-              An interactive Next.js application for practicing technical
-              analyst interviews and reviewing the concepts behind each
-              question.
+              A GPU inference research platform for Qwen3-family models,
+              combining validated serving paths, reproducible benchmarks, and
+              custom CUDA prototypes.
             </p>
             <p>
-              I built the practice and review experience end to end, focusing on
-              a clear question flow and an easy way to revisit core concepts
-              while preparing for interviews.
+              I use it to evaluate Qwen3.5 0.8B across Transformers and vLLM,
+              measuring latency, throughput, memory, token parity, continuous
+              batching, and multi-agent load. It also includes a custom Qwen3
+              decode-attention kernel and an experimental exact-window plus
+              compressed-memory path for long contexts.
             </p>
             <a
               class="project-action"
-              href="https://github.com/andersj05/AnalystPrep"
+              href="https://github.com/andersj05/DecodeBench"
               target="_blank"
               rel="noopener noreferrer"
               >View repository <span aria-hidden="true">-&gt;</span></a
