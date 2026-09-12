@@ -25,6 +25,7 @@ test('required source and media files exist', async () => {
       'project-images/kernelcubed.png',
       'project-images/analystprep.png',
       'project-images/autoharness.png',
+      'project-images/pointnote.png',
       'project-images/toll-road-report.png',
       'reports/the-toll-road-moves.pdf',
     ].map((file) => access(new URL(file, root))),
